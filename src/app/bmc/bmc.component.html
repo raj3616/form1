@@ -1,0 +1,59 @@
+<form #nice="ngForm">
+  <label for="name"> Name </label><br />
+  <input [(ngModel)]="updatinguser.name" placeholder="Name" type="text" name="name" /><br /><br />
+  <label for="surname"> Surname </label><br />
+  <input [(ngModel)]="updatinguser.surname" placeholder="Surname" type="text" name="surname" /><br /><br />
+  <label for="email"> Email</label><br />
+  <input [(ngModel)]="updatinguser.email" placeholder="Email" type="email" name="email" /><br /><br />
+  <label for="username"> UserName</label><br />
+  <input
+  [(ngModel)]="updatinguser.username"
+    placeholder="UserName"
+    type="text"
+    name="username"
+  /><br /><br />
+  <label for="password">Password</label><br />
+  <input
+  [(ngModel)]="updatinguser.password"
+    placeholder="Password"
+    type="password"
+    name="password"
+  /><br /><br />
+  <!-- {{nice.value|json}} -->
+
+  <button *ngIf="!isupdate" (click)="addNew(nice.value)">Add New</button>
+  <button *ngIf="isupdate"  (click)="updateOld()">Update</button>
+</form>
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+
+      <th>Name</th>
+
+      <th>Surname</th>
+
+      <th>Email</th>
+
+      <th>UserName</th>
+
+      <th>Password</th>
+
+      <th>Edit</th>
+
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of userlist">
+      <td>{{user.id}}</td>
+      <td>{{user.name}}</td>
+      <td>{{user.surname}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.username}}</td>
+      <td>{{user.password}}</td>
+      <td><button (click)="editUser(user)"> Edit</button></td>
+      <td><button (click)="deleteUser(user.id)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
